@@ -108,6 +108,72 @@ var connection = new autobahn.Connection({
 
          });
     }
+
+// Humi Chart config
+var Hconfig = {
+  type: "line",
+  data: {
+    labels: currentTime,
+    datasets: [
+      {
+        label: "HUMIDITY",
+        fill: false,
+        backgroundColor: chartColors.blue,
+        borderColor: chartColors.blue,
+        data: humidInfo
+      },
+      {
+        label: "AVG",
+        //type: "line",
+        fill: false,
+        backgroundColor: chartColors.yellow,
+        borderColor: chartColors.yellow,
+        data: avgHumi // AVG Humi array
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+      text: "HUMIDITY",
+      fontColor: chartColors.blue
+    },
+    tooltips: {
+      mode: "label"
+    },
+    hover: {
+      mode: "nearest",
+      intersect: true
+    },
+    scales: {
+      xAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "TIME",
+            fontColor: chartColors.orange
+          }
+        }
+      ],
+      yAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "VALUE",
+            fontColor: chartColors.purple
+          }
+        }
+      ]
+    } //End scales
+  } //End option
+};
+
+window.myLine2 = new Chart(ctx2, Hconfig);
+    
+    
     
     connection.open();
 
