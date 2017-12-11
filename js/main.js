@@ -78,7 +78,18 @@ var connection = new autobahn.Connection({
     hArray.push(message[1]);
     currentTime.push(time);
 
-  
+    // Fix range
+    if (tempInfo.length == 9) {
+      tempInfo.shift();
+      humidInfo.shift();
+      tArray.shift();
+      hArray.shift();
+      avgTemp.shift();
+      avgHumi.shift();
+      currentTime.shift();
+      // var month = MONTHS.shift();
+      // MONTHS.push(month);
+    }
 
 
     // Temp chart config
