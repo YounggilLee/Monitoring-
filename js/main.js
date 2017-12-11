@@ -44,6 +44,43 @@ var connection = new autobahn.Connection({
     
     console.log(message);
 
+
+    var now = new moment();
+    var time = now.format("HH:mm:ss");
+    //  var dt = new Date();
+    //  var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+    //Display current temperature
+    currentTemp(message[0]);
+    currentHumi(message[1]);
+
+    //Check High and Low data
+    if (message[0] > 40) {
+      $("#btn-temp").css("background-color", "red");
+    } else if (message[0] < -20) {
+      $("#btn-temp").css("background-color", "blue");
+    } else {
+      $("#btn-temp").css("background-color", "green");
+    }
+
+    if (message[1] > 40) {
+      $("#btn-humi").css("background-color", "red");
+    } else if (message[1] < -20) {
+      $("#btn-humi").css("background-color", "blue");
+    } else {
+      $("#btn-humi").css("background-color", "green");
+    }
+
+    //Push proper data in the array
+    tempInfo.push(message[0]);
+    humidInfo.push(message[1]);
+    tArray.push(message[0]);
+    hArray.push(message[1]);
+    currentTime.push(time);
+
+  
+
+
     // Temp chart config
     var Tconfig = {
       type: "line",
