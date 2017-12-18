@@ -32,7 +32,7 @@ $(document).ready(function() {
       var ctx1 = $("#myChart1");
 
 var connection = new autobahn.Connection({
-    url : 'ws://138.197.146.172:8080/ws',
+    url : 'localhost:9000',
     realm: 'realm1'
     });
     
